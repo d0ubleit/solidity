@@ -27,14 +27,6 @@
 			]
 		},
 		{
-			"name": "deleteTask",
-			"inputs": [
-				{"name":"_taskKey","type":"int8"}
-			],
-			"outputs": [
-			]
-		},
-		{
 			"name": "getTasks",
 			"inputs": [
 			],
@@ -51,6 +43,14 @@
 				{"name":"value0","type":"string"},
 				{"name":"value1","type":"uint32"},
 				{"name":"value2","type":"bool"}
+			]
+		},
+		{
+			"name": "deleteTask",
+			"inputs": [
+				{"name":"_taskKey","type":"int8"}
+			],
+			"outputs": [
 			]
 		},
 		{

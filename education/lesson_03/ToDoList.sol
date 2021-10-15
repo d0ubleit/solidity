@@ -10,7 +10,7 @@ contract ToDoList {
         bool taskCheckBox;
     }
     //Create key, which will be incremented after every task added
-    int8 public lastKey = 0;
+    int8 public lastKey = -1;
     //Array of keys, shows that this task exist (not deleted)
     bool[] public keys;
     //Create list of tasks
@@ -20,7 +20,7 @@ contract ToDoList {
 
 
     constructor() public {
-        require(tvm.pubkey() != 0, 101);
+        require(tvm.pubkey() != 0, 255);
         require(msg.pubkey() == tvm.pubkey(), 102);
         tvm.accept();
     }
@@ -34,8 +34,8 @@ contract ToDoList {
 
     //Add task to list
     function addTask(string _TaskName) public checkOwnerAndAccept {
-         myToDoList[lastKey] = Task(_TaskName, now, false);
          lastKey++;
+         myToDoList[lastKey] = Task(_TaskName, now, false);
          keys.push(true);
          numOpenedTasks++;
 
@@ -44,18 +44,6 @@ contract ToDoList {
     //Get number of unfinished tasks
     function getNumOpenedTasks() public view checkOwnerAndAccept returns(int8) {
         return numOpenedTasks;
-    }
-
-    //Delete task by key from to do list
-    function deleteTask(int8 _taskKey) public checkOwnerAndAccept {
-        //uint _taskKey = uint(taskKey);
-        require( keys[uint(_taskKey)] == true , 101, "Error: Already deleted");
-        require( _taskKey <= lastKey, 101, "Error: Task not created yet");
-        if (myToDoList[_taskKey].taskCheckBox == false) {
-            numOpenedTasks--;
-        }
-        keys[uint(_taskKey)] = false;
-        delete myToDoList[_taskKey];
     }
 
     //Get tasks from list
@@ -71,15 +59,29 @@ contract ToDoList {
 
     //Get task description by key
     function getTaskDescription(int8 _taskKey) public view checkOwnerAndAccept returns(string, uint32, bool) {
-        require(keys[uint(_taskKey)] == true, 101, "Error: Task doesn't exist");
+        require( _taskKey <= lastKey, 255, "Error: Task not created yet");
+        require(keys[uint(_taskKey)] == true, 255, "Error: Task already deleted");
         return (myToDoList[_taskKey].taskName, myToDoList[_taskKey].taskAddedTime, myToDoList[_taskKey].taskCheckBox);
+    }
+
+    //Delete task by key from to do list
+    function deleteTask(int8 _taskKey) public checkOwnerAndAccept {
+        //uint _taskKey = uint(taskKey);
+        require( _taskKey <= lastKey, 255, "Error: Task not created yet");
+        require( keys[uint(_taskKey)] == true , 255, "Error: Already deleted");
+        if (myToDoList[_taskKey].taskCheckBox == false) {
+            numOpenedTasks--;
+        }
+        keys[uint(_taskKey)] = false;
+        delete myToDoList[_taskKey];
     }
 
     //Check task as finished by key
     function finishTask(int8 _taskKey) public checkOwnerAndAccept {
-        require(keys[uint(_taskKey)] == true, 101, "Error: Task doesn't exist");
-        require(myToDoList[_taskKey].taskCheckBox == false, 101, "Error: Task already finished");
-        myToDoList[_taskKey].taskCheckBox == true;
+        require( _taskKey <= lastKey, 255, "Error: Task not created yet");
+        require(keys[uint(_taskKey)] == true, 255, "Error: Task already deleted");
+        require(myToDoList[_taskKey].taskCheckBox == false, 255, "Error: Task already finished");
+        myToDoList[_taskKey].taskCheckBox = true;
         numOpenedTasks--;
     }
 
