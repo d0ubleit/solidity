@@ -46,11 +46,11 @@ contract ToDoList {
         return numOpenedTasks;
     }
 
-    //Get tasks from list
+    //Get unfinished tasks from list
     function getTasks() public view checkOwnerAndAccept returns(string[]) {
         string[] tasksArray;
         for (uint i = 0; i < keys.length; i++) {
-            if (keys[i] == true) {
+            if (keys[i] == true && myToDoList[int8(i)].taskCheckBox == false) {
                 tasksArray.push(myToDoList[int8(i)].taskName);
             }
         }
