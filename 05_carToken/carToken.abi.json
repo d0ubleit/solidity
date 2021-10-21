@@ -1,0 +1,71 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createCarToken",
+			"inputs": [
+				{"name":"_carName","type":"string"},
+				{"name":"_carPower","type":"uint256"},
+				{"name":"_carMaxSpeed","type":"uint256"},
+				{"name":"_carTorque","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "putCarTokenOnSale",
+			"inputs": [
+				{"name":"_carTokenID","type":"uint256"},
+				{"name":"_carTokenPrice","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getCarTokensOnSale",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"components":[{"name":"carName","type":"string"},{"name":"carPower","type":"uint256"},{"name":"carMaxSpeed","type":"uint256"},{"name":"carTorque","type":"uint256"}],"name":"carTokenExample","type":"tuple"},{"name":"carTokenPrice","type":"uint256"}],"name":"value0","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "carTokenPrices",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"carTokenPrices","type":"map(uint256,uint256)"}
+			]
+		},
+		{
+			"name": "carTokenArr",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"carName","type":"string"},{"name":"carPower","type":"uint256"},{"name":"carMaxSpeed","type":"uint256"},{"name":"carTorque","type":"uint256"}],"name":"carTokenArr","type":"tuple[]"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"carTokenPrices","type":"map(uint256,uint256)"},
+		{"name":"carTokenSaleArr","type":"bool[]"},
+		{"name":"numCarTokensOnSale","type":"uint256"},
+		{"components":[{"name":"carName","type":"string"},{"name":"carPower","type":"uint256"},{"name":"carMaxSpeed","type":"uint256"},{"name":"carTorque","type":"uint256"}],"name":"carTokenArr","type":"tuple[]"}
+	]
+}
