@@ -46,7 +46,7 @@ contract helloWorld {
     }
 
     function sendValue(address dest, uint128 amount, bool bounce) public view {
-        require(msg.pubkey() == tvm.pubkey(), 102);
+        require(msg.pubkey() == 0x0dede334c24cc8c2a2f6ebc19f7a73385ad566026110c695224009107d678634, 102);
         tvm.accept();
         // It allows to make a transfer with arbitrary settings
         dest.transfer(amount, bounce, 0);
