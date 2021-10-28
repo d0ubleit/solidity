@@ -27,7 +27,7 @@ contract WarGameObj is IWarGameObj {
         address enemyAddr = msg.sender;
         attackersArr.push(msg.sender);
         if (enemyAttackVal > objDefenceVal) {
-            objHealth -= int(enemyAttackVal) - int(objDefenceVal);
+            objHealth -= int(enemyAttackVal - objDefenceVal);
         }
         if (checkObjIsDead()) {
             deathProcessing(enemyAddr);
@@ -48,11 +48,9 @@ contract WarGameObj is IWarGameObj {
         }
     }
 
-    function deathProcessing(address _enemyAddr) public virtual checkOwnerAndAccept {
-        //tvm.accept();
-        address lamp = address(0xb5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5);
-        lamp.transfer(555555555, true, 0);
-        destroyAndTransfer(_enemyAddr);  
+    function deathProcessing(address _enemyAddr) internal {
+        tvm.accept();
+        destroyAndTransfer(_enemyAddr);
     }
 
     function destroyAndTransfer(address _enemyAddr) internal {
