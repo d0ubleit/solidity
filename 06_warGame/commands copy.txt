@@ -1,0 +1,38 @@
+
+tonos-cli genaddr --setkey keysWG_01.json WarGameBase.tvc WarGameBase.abi.json
+0:0d5ebadcace428d1bea35777f24272cba9b7ffce438b5f7c794672aef7a79aa7
+
+tonos-cli genaddr --setkey keysWG_01.json WarGameUnit.tvc WarGameUnit.abi.json
+0:a69d42f169054d1b9e88c9d44f34b0a70b1b74a9528d8d019e494224b7838672
+
+tonos-cli deploy --sign keysWG_01.json --abi WarGameBase.abi.json WarGameBase.tvc '{}'
+tonos-cli deploy --sign keysWG_01.json --abi WarGameUnit.abi.json WarGameUnit.tvc '{\"yourBaseAddr\":\"0:0d5ebadcace428d1bea35777f24272cba9b7ffce438b5f7c794672aef7a79aa7\"}'
+
+
+tonos-cli genaddr --setkey keysWG_02.json WarGameBase.tvc WarGameBase.abi.json
+0:905ace372d2aee622f1005ae3252d2955d1b2d9edd621e44ab0122f03da19f2d
+
+tonos-cli genaddr --setkey keysWG_02.json WarGameUnit.tvc WarGameUnit.abi.json
+0:be2ef54a1b4849ccea12e8fb218afb22483701fa6106b3c23b958deb114762ad
+
+tonos-cli deploy --sign keysWG_02.json --abi WarGameBase.abi.json WarGameBase.tvc '{}'
+tonos-cli deploy --sign keysWG_02.json --abi WarGameUnit.abi.json WarGameUnit.tvc '{\"yourBaseAddr\":\"0:905ace372d2aee622f1005ae3252d2955d1b2d9edd621e44ab0122f03da19f2d\"}'
+
+tonos-cli call 0:be2ef54a1b4849ccea12e8fb218afb22483701fa6106b3c23b958deb114762ad attackEnemy '{\"_enemyAddr\":\"0:0d5ebadcace428d1bea35777f24272cba9b7ffce438b5f7c794672aef7a79aa7\",\"_objAttackVal\":2}' --sign keysWG_02.json --abi WarGameUnit.abi.json 
+
+
+
+
+
+tondev c d WarGameBase -v 12345678901
+0:d7f13ca3fe72a5ab721a6a5190625ba36a9647213d45fef798d42aac289fe3d9
+
+tondev c d WarGameUnit -v 12345678901
+0:82acf86c6ab111157cb6bba1031fe90584001eb75fd47f6db8d95865f36abe6c
+
+tondev s default defender
+
+tondev c r WarGameBase
+tondev c r WarGameUnit
+tondev c r --signer attacker WarGameBase
+tondev c r --signer attacker WarGameUnit

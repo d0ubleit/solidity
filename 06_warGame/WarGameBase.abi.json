@@ -25,14 +25,6 @@
 			]
 		},
 		{
-			"name": "deathProcessing",
-			"inputs": [
-				{"name":"_enemyAddr","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
 			"name": "acceptAttack",
 			"inputs": [
 				{"name":"aimAddr","type":"address"},
@@ -58,14 +50,6 @@
 			]
 		},
 		{
-			"name": "ownerPubKey",
-			"inputs": [
-			],
-			"outputs": [
-				{"name":"ownerPubKey","type":"uint256"}
-			]
-		},
-		{
 			"name": "attackersArr",
 			"inputs": [
 			],
@@ -74,19 +58,11 @@
 			]
 		},
 		{
-			"name": "UnitsArr",
+			"name": "UnitsMap",
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"UnitsArr","type":"address[]"}
-			]
-		},
-		{
-			"name": "testArr",
-			"inputs": [
-			],
-			"outputs": [
-				{"name":"testArr","type":"address[]"}
+				{"name":"UnitsMap","type":"map(address,bool)"}
 			]
 		}
 	],
@@ -100,9 +76,7 @@
 		{"name":"_constructorFlag","type":"bool"},
 		{"name":"objHealth","type":"int256"},
 		{"name":"objDefenceVal","type":"uint256"},
-		{"name":"ownerPubKey","type":"uint256"},
 		{"name":"attackersArr","type":"address[]"},
-		{"name":"UnitsArr","type":"address[]"},
-		{"name":"testArr","type":"address[]"}
+		{"name":"UnitsMap","type":"map(address,bool)"}
 	]
 }

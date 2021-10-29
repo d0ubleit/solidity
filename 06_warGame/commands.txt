@@ -1,18 +1,18 @@
 tondev s default defender
 
 tondev c d WarGameBase -v 12345678901
-0:e302bc06eab8a02f657f03c88b0cff2b09423447800e41e59537ae2859d59be7
+0:d048528544071c5b1f7404a3cde45b977886351ab6e7ed8ef651ec93921e6b6d
 
 tondev c d WarGameUnit -v 12345678901
-0:6649b19b17a49750afa09847377340e88f71aae91f80db20b6c7e49fa9307c35
+0:994c41b408ef79a4bab99fef661c98b71858f2ff520694b0785365e65ff96f42
 
 tondev s default attacker
 
 tondev c d WarGameBase -v 12345678901
-0:d7f13ca3fe72a5ab721a6a5190625ba36a9647213d45fef798d42aac289fe3d9
+0:8b0e521d2f0ce66ee8bd9b81129863ca4987eb26bc330c08d1ea36bc562f8dd4
 
 tondev c d WarGameUnit -v 12345678901
-0:82acf86c6ab111157cb6bba1031fe90584001eb75fd47f6db8d95865f36abe6c
+0:ac1fc4477ac62a1124410998617916eba563d8ba728302f5819486e30aa8e08f
 
 tondev s default defender
 
@@ -20,3 +20,14 @@ tondev c r WarGameBase
 tondev c r WarGameUnit
 tondev c r --signer attacker WarGameBase
 tondev c r --signer attacker WarGameUnit
+
+
+test:
+tondev c d WarGameBase -v 12345678901
+0:8c65e3cca16c1227704e29648fdd835ba515377c3a08439e59c0dc6e31cdba4d
+
+tondev c d WarGameUnit -v 12345678901
+0:53ecb2fe5790bcdd19732cb546673f2df52f7545a66e542ab08367eb86d12b6a
+
+tondev c d testAttack --signer attacker -v 12345678901
+0:d4196258610df601508b348c6840c620f9bebb6502ad88ec69f49c7856dc5756

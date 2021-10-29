@@ -1,45 +1,37 @@
 pragma ton-solidity >= 0.6;
 pragma AbiHeader expire;
 import "WarGameObj.sol";
+import "WarGameUnit.sol" as WGUnit;
 
 contract WarGameBase is WarGameObj {
     
-    address[] public UnitsArr;
-    address[] public testArr;
+    mapping(address => bool) public UnitsMap;
 
     constructor() public {
         require(tvm.pubkey() != 0, 101);
         require(msg.pubkey() == tvm.pubkey(), 102);
         tvm.accept();
-        ownerPubKey = msg.pubkey();
     } 
 
     function addWarUnit() external {
         tvm.accept();
-        UnitsArr.push(msg.sender);
+        UnitsMap.add(msg.sender, true); 
     }
 
-    function removeWarUnit() external{
-        for (uint ind = 0; ind < UnitsArr.length; ind++) {
-            testArr.push(msg.sender);
-        
-        /*    if (UnitsArr[ind] == msg.sender) {
-                UnitsArr[ind] = UnitsArr[UnitsArr.length - 1];
-                UnitsArr.pop();
-            }
-        */    
-        }
-    }
-
-    function deathProcessing(address _enemyAddr) public override { //checkOwnerAndAccept{
+    function removeWarUnit() external {
+        require(UnitsMap.exists(msg.sender), 102, "Error: This unit not associated with this base");
         tvm.accept();
-        address[] tempArr = UnitsArr;
-        for (address unitAddr : tempArr) {
-            WarGameObj(unitAddr).deathProcessing(_enemyAddr);
+        delete UnitsMap[msg.sender];
+        
+    } 
+
+    function deathProcessing(address _enemyAddr) internal override { 
+        tvm.accept(); 
+        mapping(address => bool) TempMap = UnitsMap;
+        for ((address UnitAddr, ) : TempMap) {
+            WGUnit.WarGameUnit(UnitAddr).deathOfBase(_enemyAddr);
         }
-        address lamp = address(0xb5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5);
-        lamp.transfer(777777777, true, 0);
-        destroyAndTransfer(_enemyAddr);  
+        destroyAndTransfer(_enemyAddr);   
     }  
 
     

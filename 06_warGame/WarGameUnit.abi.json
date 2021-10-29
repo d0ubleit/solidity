@@ -22,14 +22,13 @@
 		{
 			"name": "attackEnemy",
 			"inputs": [
-				{"name":"_enemyAddr","type":"address"},
-				{"name":"_objAttackVal","type":"uint256"}
+				{"name":"_aimAddr","type":"address"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "deathProcessing",
+			"name": "deathOfBase",
 			"inputs": [
 				{"name":"_enemyAddr","type":"address"}
 			],
@@ -62,14 +61,6 @@
 			]
 		},
 		{
-			"name": "ownerPubKey",
-			"inputs": [
-			],
-			"outputs": [
-				{"name":"ownerPubKey","type":"uint256"}
-			]
-		},
-		{
 			"name": "attackersArr",
 			"inputs": [
 			],
@@ -96,7 +87,6 @@
 		{"name":"_constructorFlag","type":"bool"},
 		{"name":"objHealth","type":"int256"},
 		{"name":"objDefenceVal","type":"uint256"},
-		{"name":"ownerPubKey","type":"uint256"},
 		{"name":"attackersArr","type":"address[]"},
 		{"name":"BaseAddr","type":"address"},
 		{"name":"objAttackVal","type":"uint256"}

@@ -13,7 +13,6 @@ contract WarGameUnit is WarGameObj {
         require(msg.pubkey() == tvm.pubkey(), 102);
         tvm.accept();
         BaseAddr = yourBaseAddr;
-        ownerPubKey = msg.pubkey();
         WarGameBase(BaseAddr).addWarUnit();
     } 
 
@@ -21,17 +20,19 @@ contract WarGameUnit is WarGameObj {
         objAttackVal = _objAttackVal;
     }
 
-    function attackEnemy(address _enemyAddr, uint _objAttackVal) public {
-        tvm.accept();
-        IWarGameObj(_enemyAddr).acceptAttack(_enemyAddr, _objAttackVal); 
+    function attackEnemy(address _aimAddr) public checkOwnerAndAccept{
+        IWarGameObj(_aimAddr).acceptAttack(_aimAddr, objAttackVal);  
     }
 
-    function deathProcessing(address _enemyAddr) public override {
-        //require(msg.pubkey() == tvm.pubkey() || msg.sender == BaseAddr, 102);
+    function deathOfBase(address _enemyAddr) external {
+        require(msg.sender == BaseAddr, 102, "Error: Call from base, which is not owner of this unit");
+        tvm.accept();
+        deathProcessing(_enemyAddr);
+    }
+
+    function deathProcessing(address _enemyAddr) internal override {
         tvm.accept();
         WarGameBase(BaseAddr).removeWarUnit();
-        address lamp = address(0xb5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5);
-        lamp.transfer(999999999, true, 0);
         destroyAndTransfer(_enemyAddr);  
     }  
 
