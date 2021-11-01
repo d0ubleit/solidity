@@ -89,6 +89,7 @@
 		{"name":"objDefenceVal","type":"uint256"},
 		{"name":"attackersArr","type":"address[]"},
 		{"name":"BaseAddr","type":"address"},
-		{"name":"objAttackVal","type":"uint256"}
+		{"name":"objAttackVal","type":"uint256"},
+		{"name":"UnitName","type":"string"}
 	]
 }
