@@ -1,0 +1,51 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "startGame",
+			"inputs": [
+				{"name":"rootBaseAddr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addBase",
+			"inputs": [
+				{"name":"newBase","type":"address"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "usersBaseAddrMap",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"usersBaseAddrMap","type":"map(address,uint256)"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"adminAddr","type":"address"},
+		{"name":"usersBaseAddrMap","type":"map(address,uint256)"},
+		{"name":"baseID","type":"uint256"}
+	]
+}

@@ -1,0 +1,17 @@
+Lobby test:
+tondev c d  WarGameLobby -v 123456789012
+0:6fac80e64516851858a338e8e1a9d10403d32992efa3f0dac1817a074dac972a
+
+
+tondev c d  WarGameBase --data baseID:0  -v 1234567890123
+0:9bdd1487e558b9e779ed85e43be27ed9bafe59c46561541dc18698762c7f5551
+
+
+
+0:7cbca8dd3f18fe630de1a5bcfb5851662ab29b1556f13d5d295763e4151c10cc
+
+
+
+
+
+
