@@ -1,5 +1,6 @@
 pragma ton-solidity >= 0.6;
 pragma AbiHeader expire;
+pragma AbiHeader pubkey;
 import "WarGameObj.sol";
 import "WarGameBase.sol";
 
@@ -13,8 +14,8 @@ contract WarGameUnit is WarGameObj {
         //require(msg.pubkey() == tvm.pubkey(), 102);
         tvm.accept();
         BaseAddr = yourBaseAddr;
-        WarGameBase(BaseAddr).addWarUnit();
-    } 
+        //WarGameBase(BaseAddr).addWarUnit();
+    }  
 
     function setAttackVal(uint _objAttackVal) public checkOwnerAndAccept {
         objAttackVal = _objAttackVal;

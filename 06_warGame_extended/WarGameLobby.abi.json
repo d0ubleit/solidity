@@ -1,11 +1,12 @@
 {
 	"ABI version": 2,
 	"version": "2.1",
-	"header": ["time", "expire"],
+	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
 			"name": "constructor",
 			"inputs": [
+				{"name":"_rootBase","type":"address"}
 			],
 			"outputs": [
 			]
@@ -13,26 +14,48 @@
 		{
 			"name": "startGame",
 			"inputs": [
-				{"name":"rootBaseAddr","type":"address"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "addBase",
+			"name": "getMyBaseAddr",
 			"inputs": [
-				{"name":"newBase","type":"address"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
 			]
 		},
 		{
-			"name": "usersBaseAddrMap",
+			"name": "getPlayersAlive",
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"usersBaseAddrMap","type":"map(address,uint256)"}
+				{"name":"value0","type":"map(uint256,address)"}
+			]
+		},
+		{
+			"name": "adminPubkey",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"adminPubkey","type":"uint256"}
+			]
+		},
+		{
+			"name": "playersPubkeysMap",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"playersPubkeysMap","type":"map(uint256,address)"}
+			]
+		},
+		{
+			"name": "_await_WarGameBase_selfProduceBase",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
 			]
 		}
 	],
@@ -44,8 +67,10 @@
 		{"name":"_pubkey","type":"uint256"},
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
-		{"name":"adminAddr","type":"address"},
-		{"name":"usersBaseAddrMap","type":"map(address,uint256)"},
-		{"name":"baseID","type":"uint256"}
+		{"name":"_await","type":"optional(cell)"},
+		{"name":"adminPubkey","type":"uint256"},
+		{"name":"playersPubkeysMap","type":"map(uint256,address)"},
+		{"name":"baseID","type":"uint256"},
+		{"name":"rootBase","type":"address"}
 	]
 }

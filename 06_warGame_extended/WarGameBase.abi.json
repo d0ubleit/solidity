@@ -1,18 +1,12 @@
 {
 	"ABI version": 2,
 	"version": "2.1",
-	"header": ["time", "expire"],
+	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
 			"name": "constructor",
 			"inputs": [
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "addWarUnit",
-			"inputs": [
+				{"name":"_rootWarrior","type":"address"}
 			],
 			"outputs": [
 			]
@@ -25,9 +19,8 @@
 			]
 		},
 		{
-			"name": "produceUnit",
+			"name": "produceWarrior",
 			"inputs": [
-				{"name":"mainWarAddr","type":"address"}
 			],
 			"outputs": [
 			]
@@ -35,9 +28,12 @@
 		{
 			"name": "selfProduceBase",
 			"inputs": [
-				{"name":"_baseID","type":"uint256"}
+				{"name":"answerId","type":"uint32"},
+				{"name":"_baseID","type":"uint256"},
+				{"name":"senderPubkey","type":"uint256"}
 			],
 			"outputs": [
+				{"name":"value0","type":"address"}
 			]
 		},
 		{
@@ -74,11 +70,11 @@
 			]
 		},
 		{
-			"name": "warriorCnt",
+			"name": "warriorID",
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"warriorCnt","type":"uint256"}
+				{"name":"warriorID","type":"uint256"}
 			]
 		},
 		{
@@ -87,6 +83,14 @@
 			],
 			"outputs": [
 				{"name":"UnitsMap","type":"map(address,bool)"}
+			]
+		},
+		{
+			"name": "thisPubkey",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"thisPubkey","type":"uint256"}
 			]
 		}
 	],
@@ -103,7 +107,9 @@
 		{"name":"objDefenceVal","type":"uint256"},
 		{"name":"attackersArr","type":"address[]"},
 		{"name":"baseID","type":"uint256"},
-		{"name":"warriorCnt","type":"uint256"},
-		{"name":"UnitsMap","type":"map(address,bool)"}
+		{"name":"warriorID","type":"uint256"},
+		{"name":"rootWarrior","type":"address"},
+		{"name":"UnitsMap","type":"map(address,bool)"},
+		{"name":"thisPubkey","type":"uint256"}
 	]
 }

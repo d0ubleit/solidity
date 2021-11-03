@@ -1,5 +1,6 @@
 pragma ton-solidity >= 0.6;
 pragma AbiHeader expire;
+pragma AbiHeader pubkey;
 import "WarGameUnit.sol";
 
 contract WarGameWarrior is WarGameUnit {
@@ -13,6 +14,28 @@ contract WarGameWarrior is WarGameUnit {
         tvm.accept();
     }
     
+    function selfProduceWarrior(uint _warriorID, uint senderPubkey) external responsible returns(address) {
+        tvm.accept();
+        TvmCell code = tvm.code();
+        address newWarrior = new WarGameWarrior{
+            value: 2 ton,
+            code: code,
+            pubkey: senderPubkey,
+            bounce: false,
+            varInit: {
+                warriorID: _warriorID
+            }
+        }(msg.sender);
+        return newWarrior; 
+    } 
+
+
+
+
+
+
+
+
     function produceWarrior() external returns(address newWarrior) {
         tvm.accept();
         TvmCell code = tvm.code();

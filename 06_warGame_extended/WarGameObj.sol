@@ -1,5 +1,6 @@
 pragma ton-solidity >= 0.6;
 pragma AbiHeader expire;
+pragma AbiHeader pubkey;
 import "IWarGameObj.sol";
 
 contract WarGameObj is IWarGameObj {
