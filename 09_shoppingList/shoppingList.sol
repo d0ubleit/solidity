@@ -5,13 +5,17 @@ import "AshoppingList.sol";
 import "IshoppingList.sol";
 import "shoppingStructs.sol";
 
-contract shoppingList is AshoppingList {
+contract shoppingList{
 
+    uint ownerPubkey;
     mapping(int32 => ShopItem) shopList;
     ShopListSummary shoppingStat;
-    int32 IDcnt;
+    int32 IDcnt; 
 
-    constructor(uint _ownerPubkey) AshoppingList(_ownerPubkey) public {    
+    constructor(uint256 _ownerPubkey) public {
+        require(_ownerPubkey != 0, 120);
+        tvm.accept();
+        ownerPubkey = _ownerPubkey;
     }
     
     modifier onlyOwner() {
@@ -50,12 +54,14 @@ contract shoppingList is AshoppingList {
     }
 
     function getShoppingList() public view onlyOwner returns(ShopItem[] showShopList) {
+        tvm.accept();
         for((int32 itemID, ShopItem shopItemExample) : shopList) {
             showShopList.push(shopItemExample);
         }
     }
 
     function getShoppinngSummary() public view onlyOwner returns(ShopListSummary) {
+        tvm.accept();
         return shoppingStat;
     }
 
