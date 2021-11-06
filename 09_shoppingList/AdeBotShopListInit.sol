@@ -19,7 +19,9 @@ import "Itransactable.sol";
 abstract contract AdeBotShopListInit is Debot, Upgradable {
     bytes Icon;
 
-    TvmCell SL_Code; 
+    TvmCell SL_Code;
+    TvmCell SL_Data;
+    TvmCell SL_StateInit; 
     address SL_address;  
     ShopListSummary SL_Summary;        
     int32 SL_itemID;    
@@ -29,10 +31,12 @@ abstract contract AdeBotShopListInit is Debot, Upgradable {
     uint32 INITIAL_BALANCE =  200000000;
 
 
-    function setShoppingListCode(TvmCell code) public {
+    function setShoppingListCode(TvmCell code, TvmCell data) public {
         require(msg.pubkey() == tvm.pubkey(), 101);
         tvm.accept();
         SL_Code = code;
+        SL_Data = data;
+        SL_StateInit = tvm.buildStateInit(SL_Code, SL_Data);
     }
 
 
@@ -80,7 +84,7 @@ abstract contract AdeBotShopListInit is Debot, Upgradable {
         if (status) {
             ownerPubkey = res;
             Terminal.print(0, "Checking if you already have a Shopping list ...");
-            TvmCell deployState = tvm.insertPubkey(SL_Code, ownerPubkey);
+            TvmCell deployState = tvm.insertPubkey(SL_StateInit, ownerPubkey);
             SL_address = address.makeAddrStd(0, tvm.hash(deployState));
             Terminal.print(0, format( "Info: your Shopping List contract address is {}", SL_address));
             Sdk.getAccountType(tvm.functionId(checkAccountStatus), SL_address);
@@ -149,7 +153,7 @@ abstract contract AdeBotShopListInit is Debot, Upgradable {
 
 
     function deploy() private view {
-            TvmCell image = tvm.insertPubkey(SL_Code, ownerPubkey);
+            TvmCell image = tvm.insertPubkey(SL_StateInit, ownerPubkey);
             optional(uint256) none;
             TvmCell deployMsg = tvm.buildExtMsg({
                 abiVer: 2,
