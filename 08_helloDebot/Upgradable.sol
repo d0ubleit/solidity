@@ -1,1 +1,22 @@
-FwbilEiVIgPjRUlTX6a/d14MxsunusguzxnxO3p03895392nH82YULkj50aQjzjQiEygsEXrd7EyjE1Mo603zrSqwD6wDS0qp1at9VPOFbKWGbJsFkGKkkbqgYk/Qj9+CivmZrQEzSqmfLvs1fkg5/cxxZEWQRIRxuqL0g3rwnw4FMT8DXiqlvgfQUH/ydxU8gEqWggYPkABWRGQILgTYNgt3FbxOTKEeToXtlgAWAJSUH03ajv2d8cgCEDDv/XiuHXGmTQYVFKUfoNNf3SZ4gGmNyISpoMIQMu+9mNAoLBMBheGGee+G1R3FJPX1tzZ//e3eVnz6mMHca1OuertNjdTgj4/CFyWP6IHVb768bd63oI2NdMEPP4tnm1KKzwovjPprq4BMJkMsZu7pQwQCtnYcz7ZsNmvaXQRvwEdALpcz7S6KN+CdQiMjI6bdmRVw8qvwy2/eAjr+DfjlfzweJ5VKmXQHGBZQ8Umf4eFhk64uMSvA5xN6PwS0+RMKBgWIwI+73u0dL+DD4Sd8/PMev4Gts8892yzLoq+vz5SrFowI0IkpKh8eerZH9fTBgAAVe4JKvqZcLnvaRDEDN7iVgOZ17f0UcLGurdVq7O7uetp1ZAo1r2srlQoi
+pragma ton-solidity >=0.35.0;
+
+abstract contract Upgradable {
+    /*
+     * Set code
+     */
+
+    /// @notice Allows to upgrade contract code and data.
+    /// @param state Root cell with StateInit structure of the new contract.
+    /// Remark: only code is used from this structure.
+    function upgrade(TvmCell state) public virtual {
+        require(msg.pubkey() == tvm.pubkey(), 100);
+        TvmCell newcode = state.toSlice().loadRef();
+        tvm.accept();
+        tvm.commit();
+        tvm.setcode(newcode);
+        tvm.setCurrentCode(newcode);
+        onCodeUpgrade();
+    }
+
+    function onCodeUpgrade() internal virtual;
+}

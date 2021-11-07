@@ -16,7 +16,7 @@ import "IshoppingList.sol";
 import "Itransactable.sol";
 
 // SL = ShoppingList
-abstract contract AdeBotShopListInit is Debot, Upgradable {
+abstract contract ADeBotSL_Init is Debot, Upgradable {
     bytes Icon;
 
     TvmCell SL_Code;
@@ -79,8 +79,8 @@ abstract contract AdeBotShopListInit is Debot, Upgradable {
         return [ Terminal.ID, Menu.ID, AddressInput.ID, ConfirmInput.ID ];
     }
 
-    function savePublicKey(string _ownpubkey) public {
-        (uint res, bool status) = stoi("0x"+_ownpubkey);
+    function savePublicKey(string ownpubkey) public {
+        (uint res, bool status) = stoi("0x" + ownpubkey);
         if (status) {
             ownerPubkey = res;
             Terminal.print(0, "Checking if you already have a Shopping list ...");

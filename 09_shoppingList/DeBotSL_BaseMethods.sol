@@ -3,10 +3,10 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
     
-import "AdeBotShopListInit.sol";
+import "ADeBotSL_Init.sol";
  
 // SL = Shopping List
-contract DeBotSL_BaseMethods is AdeBotShopListInit {
+contract DeBotSL_BaseMethods is ADeBotSL_Init {
     
     function requestShowShoppingList(uint32 index) public view {
         index = index;
