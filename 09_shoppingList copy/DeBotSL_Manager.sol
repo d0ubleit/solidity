@@ -33,13 +33,13 @@ contract DeBotSL_Manager is DeBotSL_BaseMethods {
         Terminal.input(tvm.functionId(addToList_num), "Name of item you want to buy:", false);
     }
 
-    function addToList_num(string value) public {
-        itemName = value;
+    function addToList_num(string _itemName) public {
+        itemName = _itemName;
         Terminal.input(tvm.functionId(requestAddToList), "How many items you need:", false);
     }
 
-    function requestAddToList(string value) public view {
-        (uint256 itemNum,) = stoi(value);
+    function requestAddToList(string _itemNum) public view {
+        (uint256 itemNum,) = stoi(_itemNum);
         optional(uint256) pubkey = 0;
         IshoppingList(SL_address).addItemToList{
                 abiVer: 2,

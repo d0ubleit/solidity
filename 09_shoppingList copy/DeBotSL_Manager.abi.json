@@ -126,7 +126,7 @@
 		{
 			"name": "savePublicKey",
 			"inputs": [
-				{"name":"value","type":"bytes"}
+				{"name":"ownpubkey","type":"bytes"}
 			],
 			"outputs": [
 			]

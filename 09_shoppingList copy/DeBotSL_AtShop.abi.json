@@ -10,7 +10,7 @@
 			]
 		},
 		{
-			"name": "addToList_name",
+			"name": "markItemPurchased_ID",
 			"inputs": [
 				{"name":"index","type":"uint32"}
 			],
@@ -18,17 +18,17 @@
 			]
 		},
 		{
-			"name": "addToList_num",
+			"name": "markItemPurchased_Price",
 			"inputs": [
-				{"name":"_itemName","type":"bytes"}
+				{"name":"_itemID","type":"bytes"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "requestAddToList",
+			"name": "requestMarkItemPurchased",
 			"inputs": [
-				{"name":"_itemNum","type":"bytes"}
+				{"name":"_itemTotalPrice","type":"bytes"}
 			],
 			"outputs": [
 			]
@@ -68,8 +68,7 @@
 		{
 			"name": "setShoppingListCode",
 			"inputs": [
-				{"name":"code","type":"cell"},
-				{"name":"data","type":"cell"}
+				{"name":"code","type":"cell"}
 			],
 			"outputs": [
 			]
@@ -126,7 +125,7 @@
 		{
 			"name": "savePublicKey",
 			"inputs": [
-				{"name":"value","type":"bytes"}
+				{"name":"_ownpubkey","type":"bytes"}
 			],
 			"outputs": [
 			]

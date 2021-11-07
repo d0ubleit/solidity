@@ -39,15 +39,15 @@ contract DeBotSL_Manager is DeBotSL_BaseMethods {
         }
     }
 
-    function markItemPurchased_Price(string value) public {
-        (uint256 itemID_,) = stoi(value);    
+    function markItemPurchased_Price(string _itemID) public {
+        (uint256 itemID_,) = stoi(_itemID);    
         itemID = int32(itemID_);
         Terminal.input(tvm.functionId(requestMarkItemPurchased), "Enter price you paid:", false);
     }
 
-    function requestMarkItemPurchased(string value) public view {
+    function requestMarkItemPurchased(string _itemTotalPrice) public view {
         optional(uint256) pubkey = 0;
-        (uint256 itemTotalPrice,) = stoi(value);
+        (uint256 itemTotalPrice,) = stoi(_itemTotalPrice);
         IshoppingList(SL_address).setItemIsPurchased{
                 abiVer: 2,
                 extMsg: true,

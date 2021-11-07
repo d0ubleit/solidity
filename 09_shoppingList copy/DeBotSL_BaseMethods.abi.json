@@ -3,37 +3,6 @@
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
-			"name": "openMenu",
-			"inputs": [
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "addToList_name",
-			"inputs": [
-				{"name":"index","type":"uint32"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "addToList_num",
-			"inputs": [
-				{"name":"_itemName","type":"bytes"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "requestAddToList",
-			"inputs": [
-				{"name":"_itemNum","type":"bytes"}
-			],
-			"outputs": [
-			]
-		},
-		{
 			"name": "requestShowShoppingList",
 			"inputs": [
 				{"name":"index","type":"uint32"}
@@ -60,7 +29,14 @@
 		{
 			"name": "requestDeleteListItem",
 			"inputs": [
-				{"name":"_itemID","type":"bytes"}
+				{"name":"value","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "openMenu",
+			"inputs": [
 			],
 			"outputs": [
 			]
@@ -68,8 +44,7 @@
 		{
 			"name": "setShoppingListCode",
 			"inputs": [
-				{"name":"code","type":"cell"},
-				{"name":"data","type":"cell"}
+				{"name":"code","type":"cell"}
 			],
 			"outputs": [
 			]

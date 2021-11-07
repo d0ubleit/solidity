@@ -79,8 +79,8 @@ abstract contract ADeBotSL_Init is Debot, Upgradable {
         return [ Terminal.ID, Menu.ID, AddressInput.ID, ConfirmInput.ID ];
     }
 
-    function savePublicKey(string value) public {
-        (uint res, bool status) = stoi("0x"+value);
+    function savePublicKey(string ownpubkey) public {
+        (uint res, bool status) = stoi("0x" + ownpubkey);
         if (status) {
             ownerPubkey = res;
             Terminal.print(0, "Checking if you already have a Shopping list ...");

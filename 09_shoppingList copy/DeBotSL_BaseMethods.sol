@@ -66,8 +66,8 @@ contract DeBotSL_BaseMethods is ADeBotSL_Init {
         }
     }
 
-    function requestDeleteListItem(string value) public view { 
-        (uint256 itemID,) = stoi(value); 
+    function requestDeleteListItem(string _itemID) public view { 
+        (uint256 itemID,) = stoi(_itemID); 
         optional(uint256) pubkey = 0;
         IshoppingList(SL_address).deleteItemFromList{ 
                 abiVer: 2,
