@@ -53,12 +53,8 @@ abstract contract ADeBotSL_Init is Debot, Upgradable {
         Terminal.input(tvm.functionId(savePublicKey),"Please enter your public key",false);
     }
 
-    ///////////////////////////////////----------------------////////////////////////////////
     
-    ///////////////////////////////////инфо можно вынести в каждый контракт разное.//////////
-                                        
-    ///////////////////////////////////----------------------////////////////////////////////
-    function getDebotInfo() public functionID(0xDEB) override view returns(
+    function getDebotInfo() public functionID(0xDEB) virtual override view returns(
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon
     ) {
@@ -187,7 +183,7 @@ abstract contract ADeBotSL_Init is Debot, Upgradable {
         IshoppingList(SL_address).getShoppinngSummary{
             abiVer: 2,
             extMsg: true,
-            sign: true,
+            sign: false,
             pubkey: none,
             time: uint64(now),
             expire: 0,
@@ -201,7 +197,6 @@ abstract contract ADeBotSL_Init is Debot, Upgradable {
         openMenu();
     }
 
-    ///////////////////////////////Try to do with interface and make func private
     function openMenu() public virtual {   
     }
              

@@ -8,7 +8,7 @@ import "DeBotSL_BaseMethods.sol";
 // SL = Shopping List
 contract DeBotSL_Manager is DeBotSL_BaseMethods {
 
-    string itemName;
+    string _itemName;
     
     function openMenu() public override {
         string sep = '----------------------------------------';
@@ -34,12 +34,12 @@ contract DeBotSL_Manager is DeBotSL_BaseMethods {
     }
 
     function addToList_num(string value) public {
-        itemName = value;
+        _itemName = value;
         Terminal.input(tvm.functionId(requestAddToList), "How many items you need:", false);
     }
 
     function requestAddToList(string value) public view {
-        (uint256 itemNum,) = stoi(value);
+        (uint256 _itemNum,) = stoi(value);
         optional(uint256) pubkey = 0;
         IshoppingList(SL_address).addItemToList{
                 abiVer: 2,
@@ -50,6 +50,22 @@ contract DeBotSL_Manager is DeBotSL_BaseMethods {
                 expire: 0,
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
-            }(itemName, int32(itemNum)); 
+            }(_itemName, int32(_itemNum)); 
     }  
+
+    function getDebotInfo() public functionID(0xDEB) override view returns(
+        string name, string version, string publisher, string key, string author,
+        address support, string hello, string language, string dabi, bytes icon
+    ) {
+        name = "Shopping List Manager DeBot";
+        version = "0.1";
+        publisher = "d0ubleit";
+        key = "Shopping List Manager";
+        author = "d0ubleit";
+        support = address.makeAddrStd(0, 0x81b6312da6eaed183f9976622b5a39a90d5cff47e4d2a541bd97ee216e8300b1);
+        hello = "This is Shopping List Manager DeBot. Here you can manage your shopping list (add, delete, show list)";
+        language = "en";
+        dabi = m_debotAbi.get(); //Not changed to left base files untouched
+        icon = Icon; 
+    }
 }

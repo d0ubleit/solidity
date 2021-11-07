@@ -44,6 +44,7 @@ contract shoppingList{
 
     function setItemIsPurchased(int32 _itemID, int32 _itemTotalPrice) public onlyOwner {
         require(shopList.exists(_itemID), 102);
+        require(shopList[_itemID].itemIsPurchased == false, 103);
         tvm.accept();
         shopList[_itemID].itemIsPurchased = true;
         shopList[_itemID].itemTotalPrice = _itemTotalPrice;
@@ -52,14 +53,14 @@ contract shoppingList{
         shoppingStat.totalPricePaid += _itemTotalPrice;
     }
 
-    function getShoppingList() public view onlyOwner returns(ShopItem[] showShopList) {
+    function getShoppingList() public view  returns(ShopItem[] showShopList) {
         tvm.accept();
         for((int32 itemID, ShopItem shopItemExample) : shopList) {
             showShopList.push(shopItemExample);
         }
     }
 
-    function getShoppinngSummary() public view onlyOwner returns(ShopListSummary) {
+    function getShoppinngSummary() public view returns(ShopListSummary) {
         tvm.accept();
         return shoppingStat;
     }

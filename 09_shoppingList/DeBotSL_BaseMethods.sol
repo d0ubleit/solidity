@@ -14,7 +14,7 @@ contract DeBotSL_BaseMethods is ADeBotSL_Init {
         IshoppingList(SL_address).getShoppingList{
             abiVer: 2,
             extMsg: true,
-            sign: true,
+            sign: false,
             pubkey: none,
             time: uint64(now),
             expire: 0,
@@ -23,25 +23,25 @@ contract DeBotSL_BaseMethods is ADeBotSL_Init {
         }();
     }
 
-    function showShoppingList(ShopItem[] _shoppingList ) public {
+    function showShoppingList(ShopItem[] showShopList ) public {
         uint32 i;
-        if (_shoppingList.length > 0 ) {
+        if (showShopList.length > 0 ) {
             Terminal.print(0, "Here is your shopping list:");
-            for (i = 0; i < _shoppingList.length; i++) { 
-                ShopItem SLexample = _shoppingList[i];
+            for (i = 0; i < showShopList.length; i++) { 
+                ShopItem SLexample = showShopList[i];
                 string checkBox;
                 if (SLexample.itemIsPurchased) {
                     checkBox = '✓';
-                    Terminal.print(0, format("{} {}: \"{}\" - Amount:{} - Cost for all:{} - Created at {}", 
+                    Terminal.print(0, format(" {} || {}: \"{}\" || Amount:{} || Cost for all:{} || Created at {}", 
                         checkBox,
                         SLexample.itemID,
                         SLexample.itemName,
                         SLexample.itemNum,
-                        SLexample.itemCreationTime,
-                        SLexample.itemTotalPrice));
+                        SLexample.itemTotalPrice,
+                        SLexample.itemCreationTime));
                 } else {
-                    checkBox = '-';
-                    Terminal.print(0, format("{} {}: \"{}\" - Amount:{} - Created at {}", 
+                    checkBox = '.';
+                    Terminal.print(0, format(" {} || {}: \"{}\" || Amount:{} || Created at {}", 
                         checkBox,
                         SLexample.itemID,
                         SLexample.itemName,
@@ -67,7 +67,7 @@ contract DeBotSL_BaseMethods is ADeBotSL_Init {
     }
 
     function requestDeleteListItem(string value) public view { 
-        (uint256 itemID,) = stoi(value); 
+        (uint256 _itemID,) = stoi(value); 
         optional(uint256) pubkey = 0;
         IshoppingList(SL_address).deleteItemFromList{ 
                 abiVer: 2,
@@ -78,7 +78,7 @@ contract DeBotSL_BaseMethods is ADeBotSL_Init {
                 expire: 0,
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
-            }(int32(itemID)); 
+            }(int32(_itemID)); 
     }
 
     function openMenu() public virtual override {   

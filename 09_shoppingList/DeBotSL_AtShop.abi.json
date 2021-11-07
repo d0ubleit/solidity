@@ -20,7 +20,7 @@
 		{
 			"name": "markItemPurchased_Price",
 			"inputs": [
-				{"name":"_itemID","type":"bytes"}
+				{"name":"value","type":"bytes"}
 			],
 			"outputs": [
 			]
@@ -28,9 +28,27 @@
 		{
 			"name": "requestMarkItemPurchased",
 			"inputs": [
-				{"name":"_itemTotalPrice","type":"bytes"}
+				{"name":"value","type":"bytes"}
 			],
 			"outputs": [
+			]
+		},
+		{
+			"name": "getDebotInfo",
+			"id": "0xDEB",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"version","type":"bytes"},
+				{"name":"publisher","type":"bytes"},
+				{"name":"key","type":"bytes"},
+				{"name":"author","type":"bytes"},
+				{"name":"support","type":"address"},
+				{"name":"hello","type":"bytes"},
+				{"name":"language","type":"bytes"},
+				{"name":"dabi","type":"bytes"},
+				{"name":"icon","type":"bytes"}
 			]
 		},
 		{
@@ -44,7 +62,7 @@
 		{
 			"name": "showShoppingList",
 			"inputs": [
-				{"components":[{"name":"itemID","type":"int32"},{"name":"itemName","type":"bytes"},{"name":"itemNum","type":"int32"},{"name":"itemCreationTime","type":"uint64"},{"name":"itemIsPurchased","type":"bool"},{"name":"itemTotalPrice","type":"int32"}],"name":"_shoppingList","type":"tuple[]"}
+				{"components":[{"name":"itemID","type":"int32"},{"name":"itemName","type":"bytes"},{"name":"itemNum","type":"int32"},{"name":"itemCreationTime","type":"uint64"},{"name":"itemIsPurchased","type":"bool"},{"name":"itemTotalPrice","type":"int32"}],"name":"showShopList","type":"tuple[]"}
 			],
 			"outputs": [
 			]
@@ -60,7 +78,7 @@
 		{
 			"name": "requestDeleteListItem",
 			"inputs": [
-				{"name":"_itemID","type":"bytes"}
+				{"name":"value","type":"bytes"}
 			],
 			"outputs": [
 			]
@@ -68,7 +86,8 @@
 		{
 			"name": "setShoppingListCode",
 			"inputs": [
-				{"name":"code","type":"cell"}
+				{"name":"code","type":"cell"},
+				{"name":"data","type":"cell"}
 			],
 			"outputs": [
 			]
@@ -97,24 +116,6 @@
 			]
 		},
 		{
-			"name": "getDebotInfo",
-			"id": "0xDEB",
-			"inputs": [
-			],
-			"outputs": [
-				{"name":"name","type":"bytes"},
-				{"name":"version","type":"bytes"},
-				{"name":"publisher","type":"bytes"},
-				{"name":"key","type":"bytes"},
-				{"name":"author","type":"bytes"},
-				{"name":"support","type":"address"},
-				{"name":"hello","type":"bytes"},
-				{"name":"language","type":"bytes"},
-				{"name":"dabi","type":"bytes"},
-				{"name":"icon","type":"bytes"}
-			]
-		},
-		{
 			"name": "getRequiredInterfaces",
 			"inputs": [
 			],
@@ -125,7 +126,7 @@
 		{
 			"name": "savePublicKey",
 			"inputs": [
-				{"name":"_ownpubkey","type":"bytes"}
+				{"name":"value","type":"bytes"}
 			],
 			"outputs": [
 			]
