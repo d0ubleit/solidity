@@ -1,5 +1,4 @@
 tonos-cli
-*.keys.json
 *.code
 *.log
 *.tvc

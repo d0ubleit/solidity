@@ -27,7 +27,7 @@ fi
 
 DEBOT_NAME=${1%.*} # filename without extension
 CONTRACT1=${2%.*} # filename without extension
-NETWORK="${3:-http://127.0.0.1}"
+NETWORK="${3:-http://net.ton.dev}"
 
 echo $DEBOT_NAME
 echo $CONTRACT1
@@ -35,10 +35,10 @@ echo $NETWORK
 #
 # This is TON OS SE giver address, correct it if you use another giver
 #
-GIVER_ADDRESS=0:b5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5
+#GIVER_ADDRESS=0:b5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5
 
 # net.ton.dev 
-#GIVER_ADDRESS=0:9298e68a756590bac881e99887b73f871aeb30e88ba355b49daec742bdb39feb
+GIVER_ADDRESS=0:a532822fe755b19792cca1c26c705984ba18786d8048bd36d50c7664ec9089c0
 
 
 # Check if tonos-cli installed 
@@ -57,12 +57,20 @@ fi
 
 function giver {
     $tos --url $NETWORK call \
-        --abi ../giver.abi.json \
-        --sign ../giver.keys.json \
+        --abi ../Mygiver.abi.json \
+        --sign ../Mygiver.keys.json \
         $GIVER_ADDRESS \
-        sendTransaction "{\"dest\":\"$1\",\"value\":10000000000,\"bounce\":false}" \
+        sendTransactionSimple "{\"dest\":\"$1\",\"value\":5000000000}" \
         1>/dev/null
 }
+
+# tonos-cli --url https://net.ton.dev call 
+# --abi ../Mygiver.abi.json 
+# --sign ../Mygiver.keys.json 
+# 0:a532822fe755b19792cca1c26c705984ba18786d8048bd36d50c7664ec9089c0 
+# sendTransactionSimple "{\"dest\":\"0:6fe3571b2e6505f58d0237a3fd4cd090d62f0e86ce9c31a7b387cde89888b0b2\",\"value\":1000000000}"
+
+
 
 function get_address {
     echo $(cat $1.log | grep "Raw address:" | cut -d ' ' -f 3)
