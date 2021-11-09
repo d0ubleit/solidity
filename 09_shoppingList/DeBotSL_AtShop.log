@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: DeBotSL_AtShop.tvc
+      wc: None
+    keys: DeBotSL_AtShop.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "fan please birth ask rubber yellow girl valve parade snap raise suggest"
+Raw address: 0:d52f89e04e3fb05ca471ea495b369d39617f076e37a8f0975e652fa419395938
+testnet:
+Non-bounceable address (for init): 0QDVL4ngTj-wXKRx6klbNp05YX8Hbjeo8JdeZS-kGTlZODFY
+Bounceable address (for later access): kQDVL4ngTj-wXKRx6klbNp05YX8Hbjeo8JdeZS-kGTlZOGyd
+mainnet:
+Non-bounceable address (for init): UQDVL4ngTj-wXKRx6klbNp05YX8Hbjeo8JdeZS-kGTlZOIrS
+Bounceable address (for later access): EQDVL4ngTj-wXKRx6klbNp05YX8Hbjeo8JdeZS-kGTlZONcX
+Succeeded

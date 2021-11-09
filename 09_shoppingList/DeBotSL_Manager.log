@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: DeBotSL_Manager.tvc
+      wc: None
+    keys: DeBotSL_Manager.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "flower already cool boil spice donate film cinnamon sister equip give dune"
+Raw address: 0:d67fea975d575f50f766802ec5ba214a5b70a4af6528ccb918158e4270259c90
+testnet:
+Non-bounceable address (for init): 0QDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckAFa
+Bounceable address (for later access): kQDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckFyf
+mainnet:
+Non-bounceable address (for init): UQDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckLrQ
+Bounceable address (for later access): EQDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckOcV
+Succeeded
