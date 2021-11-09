@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: wallet.tvc
+      wc: None
+    keys: wallet.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "auction unveil power relax base assist double flash minute icon item garbage"
+Raw address: 0:a532822fe755b19792cca1c26c705984ba18786d8048bd36d50c7664ec9089c0
+testnet:
+Non-bounceable address (for init): 0QClMoIv51Wxl5LMocJscFmEuhh4bYBIvTbVDHZk7JCJwASL
+Bounceable address (for later access): kQClMoIv51Wxl5LMocJscFmEuhh4bYBIvTbVDHZk7JCJwFlO
+mainnet:
+Non-bounceable address (for init): UQClMoIv51Wxl5LMocJscFmEuhh4bYBIvTbVDHZk7JCJwL8B
+Bounceable address (for later access): EQClMoIv51Wxl5LMocJscFmEuhh4bYBIvTbVDHZk7JCJwOLE
+Succeeded
