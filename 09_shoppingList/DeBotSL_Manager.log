@@ -6,12 +6,12 @@ Input arguments:
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "flower already cool boil spice donate film cinnamon sister equip give dune"
-Raw address: 0:d67fea975d575f50f766802ec5ba214a5b70a4af6528ccb918158e4270259c90
+Seed phrase: "feature wear destroy wage input replace slight miracle staff dinner happy present"
+Raw address: 0:7a50246a0f96e92cdb94445f66afbd6980467fbf13960d723d9b3313bc772ff5
 testnet:
-Non-bounceable address (for init): 0QDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckAFa
-Bounceable address (for later access): kQDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckFyf
+Non-bounceable address (for init): 0QB6UCRqD5bpLNuURF9mr71pgEZ_vxOWDXI9mzMTvHcv9SyQ
+Bounceable address (for later access): kQB6UCRqD5bpLNuURF9mr71pgEZ_vxOWDXI9mzMTvHcv9XFV
 mainnet:
-Non-bounceable address (for init): UQDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckLrQ
-Bounceable address (for later access): EQDWf-qXXVdfUPdmgC7FuiFKW3Ckr2UozLkYFY5CcCWckOcV
+Non-bounceable address (for init): UQB6UCRqD5bpLNuURF9mr71pgEZ_vxOWDXI9mzMTvHcv9Zca
+Bounceable address (for later access): EQB6UCRqD5bpLNuURF9mr71pgEZ_vxOWDXI9mzMTvHcv9crf
 Succeeded

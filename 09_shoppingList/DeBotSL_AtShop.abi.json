@@ -3,7 +3,23 @@
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
+			"name": "invokeFromManager",
+			"inputs": [
+				{"name":"_ownerPubkey","type":"uint256"},
+				{"name":"_SL_address","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "openMenu",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "callbackToManager",
 			"inputs": [
 			],
 			"outputs": [

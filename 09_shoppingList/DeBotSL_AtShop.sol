@@ -4,12 +4,23 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
 import "DeBotSL_BaseMethods.sol";
+import "IDeBotSL.sol"; 
 
 // SL = Shopping List
 contract DeBotSL_Manager is DeBotSL_BaseMethods {
 
+    address invoker_addr;
+
     int32 _itemID;
     
+
+    function invokeFromManager(uint _ownerPubkey, address _SL_address) external {
+        invoker_addr = msg.sender;
+        ownerPubkey = _ownerPubkey;
+        SL_address = _SL_address;
+        requestGetSummary(tvm.functionId(setSummary)); 
+    }
+
     function openMenu() public override {
         string sep = '----------------------------------------';
         Menu.select(
@@ -23,9 +34,15 @@ contract DeBotSL_Manager is DeBotSL_BaseMethods {
             [
                 MenuItem("Show shopping list","",tvm.functionId(requestShowShoppingList)),
                 MenuItem("Delete from shopping list","",tvm.functionId(deleteListItem)),
-                MenuItem("Mark item as purchased","",tvm.functionId(markItemPurchased_ID))
+                MenuItem("Mark item as purchased","",tvm.functionId(markItemPurchased_ID)),
+                MenuItem("Shopping list manager","",tvm.functionId(callbackToManager))
             ] 
         ); 
+    }
+
+
+    function callbackToManager() public {
+        IDeBotSL_Manager(invoker_addr).callbackFromAtShopDebot();
     }
 
     

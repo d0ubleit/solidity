@@ -178,7 +178,7 @@ abstract contract ADeBotSL_Init is Debot, Upgradable {
         tvm.resetStorage();
     }
 
-    function requestGetSummary(uint32 answerId) private view {
+    function requestGetSummary(uint32 answerId) internal view {
         optional(uint256) none;
         IshoppingList(SL_address).getShoppinngSummary{
             abiVer: 2,

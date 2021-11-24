@@ -3,7 +3,29 @@
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
+			"name": "setDebotAtShop",
+			"inputs": [
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "openMenu",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "goShopping",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "callbackFromAtShopDebot",
 			"inputs": [
 			],
 			"outputs": [
